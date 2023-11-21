@@ -9,9 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var catAPIService: CatAPIService!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.catAPIService = CatAPIService()
+        
+        // grab some cat images
+        self.catAPIService.getSearchImages()
     }
 
 
