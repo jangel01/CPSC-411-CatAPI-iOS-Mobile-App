@@ -17,7 +17,19 @@ class ViewController: UIViewController {
         self.catAPIService = CatAPIService()
         
         // grab some cat images
-        self.catAPIService.getSearchImages()
+        self.catAPIService.getSearchImages {
+            (getSearchResult) in
+            
+            switch getSearchResult {
+            case let .success(images):
+                print("Successfully found \(images.count) cat images!")
+                if let firstImage = images.first {
+                    print("First image is: \(firstImage.id)")
+                }
+            case let .failure(error):
+                print("Error fetching random cat images: \(error)")
+            }
+        }
     }
 
 

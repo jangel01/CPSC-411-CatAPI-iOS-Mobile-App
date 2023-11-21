@@ -14,7 +14,7 @@ class CatAPIService {
         return URLSession(configuration: config)
     }()
     
-    func getSearchImages() {
+    func getSearchImages(completion: @escaping (Result<[SearchImagesData], Error>) -> Void) {
         let url = CatAPI.searchURL
         
         var request = URLRequest(url: url)
@@ -25,16 +25,19 @@ class CatAPIService {
         let task = session.dataTask(with: request) {
             (data, response, error) in
             
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: String.Encoding.utf8) {
-                    print(jsonString)
-                } else if let requestError = error {
-                    print("Error fetching cat images: \(requestError)")
-                } else {
-                    print("Unexpected error with the request")
-                }
+            let result = self.processGetSearchImagesResult(data: data, error: error)
+            OperationQueue.main.addOperation {
+                completion(result)
             }
         }
         task.resume()
+    }
+    
+    private func processGetSearchImagesResult(data: Data?, error: Error?) -> Result<[SearchImagesData], Error> {
+        guard let jsonData = data else {
+            return .failure(error!)
+        }
+        
+        return CatAPI.searchImages(fromJSON: jsonData)
     }
 }

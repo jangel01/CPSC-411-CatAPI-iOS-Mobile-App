@@ -45,4 +45,31 @@ class CatAPI {
         
         return components.url!
     }
+    
+    static func searchImages(fromJSON data: Data) -> Result<[SearchImagesData], Error>  {
+        do {
+            let decoder = JSONDecoder()
+
+            let getSearchImagesResponse = try decoder.decode([SearchImagesData].self, from: data)
+
+            let catSearchImages = getSearchImagesResponse.filter {
+                $0.url != nil
+            }
+            
+            return .success(catSearchImages)
+        } catch {
+            return .failure(error)
+        }
+    }
+    
+}
+
+struct SearchImagesData: Codable {
+    let id: String
+    let url: URL?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case url
+    }
 }
