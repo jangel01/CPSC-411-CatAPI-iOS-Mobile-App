@@ -39,12 +39,43 @@ class CatAPIService {
         task.resume()
     }
     
+    func voteOnImage(imageId: String, value: Int, completion: @escaping(Result<ImageVoteData, Error>) -> Void) {
+        let url = CatAPI.imageVoteURL
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(CatAPI.apiKey, forHTTPHeaderField: "x-api-key")
+        request.httpBody = CatAPI.encodeHttpPostBody(paramters: [
+            "image_id": imageId,
+            "value": value
+        ])
+                
+        let task = self.session.dataTask(with: request) {
+            (data, response, error) in
+            
+            let result = self.processImageVoteResult(data: data, error: error)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+        }
+        task.resume()
+    }
+    
     private func processGetSearchImagesResult(data: Data?, error: Error?) -> Result<[SearchImagesData], Error> {
         guard let jsonData = data else {
             return .failure(error!)
         }
         
         return CatAPI.searchImages(fromJSON: jsonData)
+    }
+    
+    private func processImageVoteResult(data: Data?, error: Error?) -> Result<ImageVoteData, Error> {
+        guard let jsonData = data else {
+            return .failure(error!)
+        }
+        
+        return CatAPI.imageVote(fromJSON: jsonData)
     }
     
     func downloadSearchImage(for image: SearchImagesData, completion: @escaping (Result<UIImage, Error>) -> Void) {

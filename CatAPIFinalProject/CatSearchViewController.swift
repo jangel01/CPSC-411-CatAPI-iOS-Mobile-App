@@ -88,6 +88,40 @@ class CatSearchViewController: UIViewController {
     @IBAction func rerollButtonTapped(_ btn: UIButton) {
         fetchCatImages()
     }
+    
+    @IBAction func upvoteButtonTapped(_ btn: UIButton) {
+        if let catSearchImages = self.catSearchImages {
+            self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: 1) {
+                (voteResult) in
+                
+                switch voteResult {
+                case let .success(result):
+                    print("upvoted cat image! \(result.imageId), status: \(result.message)")
+                case let .failure(error):
+                    print("Failed to upvote image: \(error)")
+                }
+            }
+        } else {
+            print("error: there is no image to upvote")
+        }
+    }
+    
+    @IBAction func downvoteButtonTapped(_ btn: UIButton) {
+        if let catSearchImages = self.catSearchImages {
+            self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: -1) {
+                (voteResult) in
+                
+                switch voteResult {
+                case let .success(result):
+                    print("downvoted cat image! \(result.imageId), status: \(result.message)")
+                case let .failure(error):
+                    print("Failed to downvote image: \(error)")
+                }
+            }
+        } else {
+            print("error: there is no image to downvote")
+        }
+    }
 
 }
 

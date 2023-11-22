@@ -36,6 +36,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Downvote">
                                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="downvoteButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4bK-S4-XgQ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rr6-xB-t74">
                                                 <rect key="frame" x="272.66666666666669" y="0.0" width="100.33333333333331" height="34.333333333333336"/>
@@ -43,6 +46,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Upvote">
                                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="upvoteButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZH8-0X-ZWr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -182,6 +188,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kw3-iA-B1V" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="10k-Ur-crc">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

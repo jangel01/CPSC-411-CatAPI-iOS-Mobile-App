@@ -9,6 +9,7 @@ import Foundation
 
 enum EndPoint: String {
     case search = "images/search"
+    case vote = "votes"
 }
 
 class CatAPI {
@@ -17,6 +18,10 @@ class CatAPI {
     
     static var searchURL: URL {
         return CatURL(endPoint: .search, parameters: ["size":"small", "has_breeds":"false", "include_breeds":"0", "include_categories":"0", "limit":"10", "mime_types":"jpg,png"])
+    }
+    
+    static var imageVoteURL: URL {
+        return CatURL(endPoint: .vote, parameters: nil)
     }
     
     private static func CatURL(endPoint: EndPoint, parameters: [String:String]?) -> URL {
@@ -46,6 +51,17 @@ class CatAPI {
         return components.url!
     }
     
+    static func encodeHttpPostBody(paramters: [String:Any]) -> Data {
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: paramters, options: [])
+            return jsonData
+        } catch {
+            print("Error encoding JSON for http body: \(error)")
+            return Data()
+        }
+    }
+    
     static func searchImages(fromJSON data: Data) -> Result<[SearchImagesData], Error>  {
         do {
             let decoder = JSONDecoder()
@@ -62,6 +78,18 @@ class CatAPI {
         }
     }
     
+    static func imageVote(fromJSON data: Data) -> Result<ImageVoteData, Error> {
+        do {
+            let decoder = JSONDecoder()
+            
+            let imageVoteResponse = try decoder.decode(ImageVoteData.self, from: data)
+            
+            return .success(imageVoteResponse)
+        } catch {
+            return .failure(error)
+        }
+    }
+    
 }
 
 struct SearchImagesData: Codable {
@@ -71,5 +99,19 @@ struct SearchImagesData: Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case url
+    }
+}
+
+struct ImageVoteData: Codable {
+    let message: String
+    let id: Int
+    let imageId: String
+    let value: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case message
+        case id
+        case imageId = "image_id"
+        case value
     }
 }
