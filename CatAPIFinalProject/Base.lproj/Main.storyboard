@@ -143,7 +143,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass.circle.fill" catalog="system" id="Qcj-Zr-LlM"/>
                     <connections>
+                        <outlet property="downvoteButton" destination="Nis-dP-TAG" id="9fU-A5-Hke"/>
                         <outlet property="searchImageView" destination="nNv-E5-65f" id="OBg-CO-CyD"/>
+                        <outlet property="upvoteButton" destination="Rr6-xB-t74" id="YXy-Bw-J3Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
