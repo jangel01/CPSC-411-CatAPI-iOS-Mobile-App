@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var searchImageView: UIImageView!
+    
     var catAPIService: CatAPIService!
     
     override func viewDidLoad() {
@@ -24,10 +26,26 @@ class ViewController: UIViewController {
             case let .success(images):
                 print("Successfully found \(images.count) cat images!")
                 if let firstImage = images.first {
-                    print("First image is: \(firstImage.id)")
+                    self.updateSearchImageView(for: firstImage)
+                } else {
+                    print("first image doesn't exist")
                 }
             case let .failure(error):
                 print("Error fetching random cat images: \(error)")
+            }
+        }
+    }
+    
+    func updateSearchImageView(for image: SearchImagesData) {
+        self.catAPIService.downloadSearchImage(for: image) {
+            (imageResult) in
+            
+            switch imageResult {
+            case let .success(image):
+                print("Successfully downloaded search image: \(image)")
+                self.searchImageView.image = image
+            case let .failure(error):
+                print("Error downloading image: \(error)")
             }
         }
     }

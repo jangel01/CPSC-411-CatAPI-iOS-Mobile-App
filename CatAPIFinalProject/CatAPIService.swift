@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+enum CatError: Error {
+    case getSearchImangesError
+    case missingImageURL
+    case imageCreationError
+}
+
 class CatAPIService {
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -39,5 +45,41 @@ class CatAPIService {
         }
         
         return CatAPI.searchImages(fromJSON: jsonData)
+    }
+    
+    func downloadSearchImage(for image: SearchImagesData, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        if let imageURL = image.url {
+            self.downloadImage(url: imageURL, completion: completion)
+        } else {
+            completion(.failure(CatError.missingImageURL))
+        }
+    }
+    
+    private func downloadImage(url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        let request = URLRequest(url: url)
+        
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
+            
+            let result = self.processImageDownloadResult(data: data, error: error)
+            
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func processImageDownloadResult(data: Data?, error: Error?) -> Result<UIImage, Error> {
+        guard let imageData = data, let image = UIImage(data: imageData) else {
+            if data == nil {
+                return .failure(error!)
+            } else {
+                return .failure(CatError.imageCreationError)
+            }
+        }
+        
+        return .success(image)
     }
 }
