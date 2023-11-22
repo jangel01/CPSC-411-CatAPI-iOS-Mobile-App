@@ -56,16 +56,25 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="67" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Prev"/>
+                                                <connections>
+                                                    <action selector="prevButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="llD-Lm-EGP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dg-rT-7Ye">
                                                 <rect key="frame" x="153" y="0.0" width="67" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Reroll"/>
+                                                <connections>
+                                                    <action selector="rerollButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5so-SZ-pK2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcE-Pd-k7V">
                                                 <rect key="frame" x="306" y="0.0" width="67" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
+                                                <connections>
+                                                    <action selector="nextButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LF2-y9-D0H"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
