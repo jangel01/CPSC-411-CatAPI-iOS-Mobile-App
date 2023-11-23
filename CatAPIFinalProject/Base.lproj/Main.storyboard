@@ -171,14 +171,65 @@
         <!--Votes-->
         <scene sceneID="gFt-0o-c8H">
             <objects>
-                <viewController title="Votes" id="qi4-Nw-ypo" sceneMemberID="viewController">
+                <viewController title="Votes" id="qi4-Nw-ypo" customClass="CatVotesViewController" customModule="CatAPIFinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YFn-kV-hvI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-id-le5">
+                                <rect key="frame" x="0.0" y="59" width="393" height="355"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="rPp-7R-sYy">
+                                <rect key="frame" x="10" y="434" width="373" height="34.333333333333314"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4X-d1-flw">
+                                        <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Prev"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwf-Cx-UEF">
+                                        <rect key="frame" x="145.33333333333334" y="0.0" width="82.666666666666657" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Refresh"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urs-5I-Hzw">
+                                        <rect key="frame" x="290.33333333333331" y="0.0" width="82.666666666666686" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Next"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="urs-5I-Hzw" firstAttribute="width" secondItem="B4X-d1-flw" secondAttribute="width" id="fy4-Cj-GhV"/>
+                                    <constraint firstItem="Jwf-Cx-UEF" firstAttribute="width" secondItem="B4X-d1-flw" secondAttribute="width" id="gMg-5V-Zh2"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfB-Oe-ax8">
+                                <rect key="frame" x="10" y="518.33333333333337" width="373" height="38.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ZnW-ay-h7k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hfB-Oe-ax8" firstAttribute="leading" secondItem="ZnW-ay-h7k" secondAttribute="leading" constant="10" id="7DU-3f-yES"/>
+                            <constraint firstItem="gdG-id-le5" firstAttribute="leading" secondItem="ZnW-ay-h7k" secondAttribute="leading" id="83j-De-j5u"/>
+                            <constraint firstItem="ZnW-ay-h7k" firstAttribute="centerY" secondItem="gdG-id-le5" secondAttribute="bottom" id="DTJ-0d-sEO"/>
+                            <constraint firstItem="ZnW-ay-h7k" firstAttribute="trailing" secondItem="gdG-id-le5" secondAttribute="trailing" id="EfB-lt-vNY"/>
+                            <constraint firstItem="ZnW-ay-h7k" firstAttribute="trailing" secondItem="rPp-7R-sYy" secondAttribute="trailing" constant="10" id="Flm-cI-BNu"/>
+                            <constraint firstItem="rPp-7R-sYy" firstAttribute="top" secondItem="gdG-id-le5" secondAttribute="bottom" constant="20" id="LoE-OT-MZ2"/>
+                            <constraint firstItem="hfB-Oe-ax8" firstAttribute="top" secondItem="rPp-7R-sYy" secondAttribute="bottom" constant="50" id="iGT-GM-a8g"/>
+                            <constraint firstItem="ZnW-ay-h7k" firstAttribute="trailing" secondItem="hfB-Oe-ax8" secondAttribute="trailing" constant="10" id="pJG-gn-J0c"/>
+                            <constraint firstItem="gdG-id-le5" firstAttribute="top" secondItem="ZnW-ay-h7k" secondAttribute="top" id="tnh-Nj-IZU"/>
+                            <constraint firstItem="rPp-7R-sYy" firstAttribute="leading" secondItem="ZnW-ay-h7k" secondAttribute="leading" constant="10" id="yx1-pq-QU3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Votes" image="arrow.up.square.fill" catalog="system" id="x9j-ML-jGL"/>
+                    <connections>
+                        <outlet property="voteImageView" destination="gdG-id-le5" id="geU-3G-0hl"/>
+                        <outlet property="voteStatusLabel" destination="hfB-Oe-ax8" id="ryr-es-lW6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fab-DE-R0D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

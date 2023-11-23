@@ -24,6 +24,10 @@ class CatAPI {
         return CatURL(endPoint: .vote, parameters: nil)
     }
     
+    static var votesURL: URL {
+        return CatURL(endPoint: .vote, parameters: nil)
+    }
+    
     private static func CatURL(endPoint: EndPoint, parameters: [String:String]?) -> URL {
         let endpoint = self.baseURLString + endPoint.rawValue
         
@@ -78,6 +82,22 @@ class CatAPI {
         }
     }
     
+    static func votes(fromJSON data: Data) -> Result<[VotesData], Error>  {
+        do {
+            let decoder = JSONDecoder()
+
+            let getVotesResponse = try decoder.decode([VotesData].self, from: data)
+
+            let voteImages = getVotesResponse.filter {
+                $0.image.url != nil
+            }
+            
+            return .success(voteImages)
+        } catch {
+            return .failure(error)
+        }
+    }
+    
     static func imageVote(fromJSON data: Data) -> Result<ImageVoteData, Error> {
         do {
             let decoder = JSONDecoder()
@@ -113,5 +133,25 @@ struct ImageVoteData: Codable {
         case id
         case imageId = "image_id"
         case value
+    }
+}
+
+struct VotesData: Codable {
+    let value: Int
+    let image: VoteImageData
+    
+    enum CodingKeys: String, CodingKey {
+        case value
+        case image
+    }
+}
+
+struct VoteImageData: Codable {
+    let id: String
+    let url: URL?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case url
     }
 }

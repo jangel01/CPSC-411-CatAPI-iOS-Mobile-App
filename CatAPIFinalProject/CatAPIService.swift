@@ -10,6 +10,7 @@ import UIKit
 
 enum CatError: Error {
     case getSearchImangesError
+    case getVotesError
     case missingImageURL
     case imageCreationError
 }
@@ -36,6 +37,25 @@ class CatAPIService {
                 completion(result)
             }
         }
+        task.resume()
+    }
+    
+    func getVotes(completion: @escaping (Result<[VotesData], Error>) -> Void) {
+        let url = CatAPI.votesURL
+        var request = URLRequest(url: url)
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(CatAPI.apiKey, forHTTPHeaderField: "x-api-key")
+        
+        let task = self.session.dataTask(with: request) {
+            (data, response, error) in
+            
+            let result = self.processGetVotesResult(data: data, error: error)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+        }
+        
         task.resume()
     }
     
@@ -70,6 +90,14 @@ class CatAPIService {
         return CatAPI.searchImages(fromJSON: jsonData)
     }
     
+    private func processGetVotesResult(data: Data?, error: Error?) -> Result<[VotesData], Error> {
+        guard let jsonData = data else {
+            return .failure(error!)
+        }
+        
+        return CatAPI.votes(fromJSON: jsonData)
+    }
+    
     private func processImageVoteResult(data: Data?, error: Error?) -> Result<ImageVoteData, Error> {
         guard let jsonData = data else {
             return .failure(error!)
@@ -80,6 +108,14 @@ class CatAPIService {
     
     func downloadSearchImage(for image: SearchImagesData, completion: @escaping (Result<UIImage, Error>) -> Void) {
         if let imageURL = image.url {
+            self.downloadImage(url: imageURL, completion: completion)
+        } else {
+            completion(.failure(CatError.missingImageURL))
+        }
+    }
+    
+    func downloadVoteImage(for image: VotesData, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        if let imageURL = image.image.url {
             self.downloadImage(url: imageURL, completion: completion)
         } else {
             completion(.failure(CatError.missingImageURL))

@@ -18,6 +18,7 @@
 		8034C7612B0C3FA4004C32EC /* CatAPIFinalProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C7602B0C3FA4004C32EC /* CatAPIFinalProjectUITestsLaunchTests.swift */; };
 		8034C7B02B0C84C6004C32EC /* CatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C7AF2B0C84C6004C32EC /* CatAPI.swift */; };
 		8034C7B22B0C88C9004C32EC /* CatAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C7B12B0C88C9004C32EC /* CatAPIService.swift */; };
+		807BD5D22B0EED6900981CED /* CatVotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BD5D12B0EED6900981CED /* CatVotesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		8034C7602B0C3FA4004C32EC /* CatAPIFinalProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIFinalProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8034C7AF2B0C84C6004C32EC /* CatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPI.swift; sourceTree = "<group>"; };
 		8034C7B12B0C88C9004C32EC /* CatAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIService.swift; sourceTree = "<group>"; };
+		807BD5D12B0EED6900981CED /* CatVotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatVotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				8034C74B2B0C3FA4004C32EC /* Info.plist */,
 				8034C7AF2B0C84C6004C32EC /* CatAPI.swift */,
 				8034C7B12B0C88C9004C32EC /* CatAPIService.swift */,
+				807BD5D12B0EED6900981CED /* CatVotesViewController.swift */,
 			);
 			path = CatAPIFinalProject;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8034C7422B0C3FA3004C32EC /* CatSearchViewController.swift in Sources */,
+				807BD5D22B0EED6900981CED /* CatVotesViewController.swift in Sources */,
 				8034C7B02B0C84C6004C32EC /* CatAPI.swift in Sources */,
 				8034C73E2B0C3FA3004C32EC /* AppDelegate.swift in Sources */,
 				8034C7B22B0C88C9004C32EC /* CatAPIService.swift in Sources */,
