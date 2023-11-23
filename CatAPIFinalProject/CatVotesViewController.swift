@@ -65,20 +65,22 @@ class CatVotesViewController: UIViewController {
                 if size.width < size.height {
                     // portrait
                     
-                    if let image = self.upvoteImages {
-                        self.updateVoteImageView(for: image.first!)
+                    if let images = self.upvoteImages {
+                        self.updateVoteImageView(for: images.first!)
                         self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
                         self.toggleVoteAssetLeadingConstraint("portrait")
+                        self.voteStatusLabel.text = "You upvoted this image!"
                     } else {
                         print("there are no images that are upvoted")
                     }
                 } else {
                     // landscape
                     
-                    if let image = self.downvoteImages {
-                        self.updateVoteImageView(for: image.first!)
+                    if let images = self.downvoteImages {
+                        self.updateVoteImageView(for: images.first!)
                         self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
                         self.toggleVoteAssetLeadingConstraint("landscape")
+                        self.voteStatusLabel.text = "You downvoted this image!"
                     } else {
                         print("there are no images that are downvoted")
                     }
@@ -103,6 +105,34 @@ class CatVotesViewController: UIViewController {
         }
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if self.traitCollection.verticalSizeClass == .compact {
+            // landscape orientation
+            
+            if let images = self.downvoteImages {
+                self.updateVoteImageView(for: images[self.currentDownvoteIndex])
+                self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
+                self.toggleVoteAssetLeadingConstraint("landscape")
+                self.voteStatusLabel.text = "You downvoted this image!"
+            } else {
+                print("there are no images that are downvoted")
+            }
+        } else {
+            // portrait orientation
+            
+            if let images = self.upvoteImages {
+                self.updateVoteImageView(for: images[self.currentUpvoteIndex])
+                self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
+                self.toggleVoteAssetLeadingConstraint("portrait")
+                self.voteStatusLabel.text = "You upvoted this image!"
+            } else {
+                print("there are no images that are upvoted")
+            }
+        }
+    }
+    
     func toggleVoteAssetLeadingConstraint(_ s: String) {
         if s == "portrait" {
             self.assetLeadingConstraintPortrait.isActive = true
@@ -111,6 +141,77 @@ class CatVotesViewController: UIViewController {
             self.assetLeadingConstraintPortrait.isActive = false
             self.assetLeadingConstraintLandscape.isActive = true
         }
+    }
+    
+    @IBAction func prevButtonTapped(_ btn: UIButton) {
+        let size = UIScreen.main.bounds.size
+        
+        if size.width < size.height {
+            // portrait
+            if let images = self.upvoteImages {
+                if self.currentUpvoteIndex > 0 {
+                    self.currentUpvoteIndex -= 1
+                } else {
+                    self.currentUpvoteIndex = images.count - 1
+                }
+                
+                self.updateVoteImageView(for: images[self.currentUpvoteIndex])
+            } else {
+                print("error: there are no upvoted images to traverse")
+            }
+        } else {
+            // landscape
+            
+            if let images = self.downvoteImages {
+                if self.currentDownvoteIndex > 0 {
+                    self.currentDownvoteIndex -= 1
+                } else {
+                    self.currentDownvoteIndex = images.count - 1
+                }
+                
+                self.updateVoteImageView(for: images[self.currentDownvoteIndex])
+            } else {
+                print("error: there are no downvoted images to traverse")
+            }
+        }
+    }
+    
+    @IBAction func nextButtonTapped(_ btn: UIButton) {
+        let size = UIScreen.main.bounds.size
+        
+        if size.width < size.height {
+            // portrait
+            
+            if let images = self.upvoteImages {
+                if self.currentUpvoteIndex < images.count - 1 {
+                    self.currentUpvoteIndex += 1
+                } else {
+                    self.currentUpvoteIndex = 0
+                }
+                
+                self.updateVoteImageView(for: images[self.currentUpvoteIndex])
+            } else {
+                print("error: there are no upvoted images to traverse")
+            }
+        } else {
+            // landscape
+            
+            if let images = self.downvoteImages {
+                if self.currentDownvoteIndex < images.count - 1 {
+                    self.currentDownvoteIndex += 1
+                } else {
+                    self.currentDownvoteIndex = 0
+                }
+                
+                self.updateVoteImageView(for: images[self.currentDownvoteIndex])
+            } else {
+                print("error: there are no downvoted images to traverse")
+            }
+        }
+    }
+    
+    @IBAction func refreshButtonTapped(_ btn: UIButton) {
+        self.fetchVoteImages()
     }
     
 }

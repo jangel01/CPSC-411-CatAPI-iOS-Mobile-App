@@ -25,7 +25,7 @@ class CatAPI {
     }
     
     static var votesURL: URL {
-        return CatURL(endPoint: .vote, parameters: nil)
+        return CatURL(endPoint: .vote, parameters: ["order": "DESC", "limit": "10"])
     }
     
     private static func CatURL(endPoint: EndPoint, parameters: [String:String]?) -> URL {
