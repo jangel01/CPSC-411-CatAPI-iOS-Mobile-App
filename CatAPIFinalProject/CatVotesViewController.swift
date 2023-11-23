@@ -66,7 +66,7 @@ class CatVotesViewController: UIViewController {
                     // portrait
                     
                     if let images = self.upvoteImages {
-                        self.updateVoteImageView(for: images.first!)
+                        self.updateVoteImageView(for: images.first!, true)
                         self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
                         self.toggleVoteAssetLeadingConstraint("portrait")
                         self.voteStatusLabel.text = "You upvoted this image!"
@@ -77,7 +77,7 @@ class CatVotesViewController: UIViewController {
                     // landscape
                     
                     if let images = self.downvoteImages {
-                        self.updateVoteImageView(for: images.first!)
+                        self.updateVoteImageView(for: images.first!, true)
                         self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
                         self.toggleVoteAssetLeadingConstraint("landscape")
                         self.voteStatusLabel.text = "You downvoted this image!"
@@ -91,16 +91,37 @@ class CatVotesViewController: UIViewController {
         }
     }
     
-    func updateVoteImageView(for image: VotesData) {
-        self.catAPIService.downloadVoteImage(for: image) {
-            (imageResult) in
+    func updateVoteImageView(for image: VotesData, _ first: Bool) {
+        
+        if first == true {
+            if let urlAsString = image.image.url?.absoluteString {
+                if CatPersistence.isFileInCache(urlAsString) == false {
+                    CatPersistence.loadFileToCache(image: image) {
+                        (fileData) in
+                        
+                        self.voteImageView.image = UIImage(data: fileData)
+                    }
+                } else {
+                    if let data = CatPersistence.loadFileFromCache(urlAsString) {
+                        self.voteImageView.image = UIImage(data: data)
+                    } else {
+                        print("Failed to load from cache: \(urlAsString)")
+                    }
+                }
+            } else {
+                print("Unable to load URL; specified string is invalid")
+            }
+        } else {
+            self.catAPIService.downloadVoteImage(for: image) {
+                (imageResult) in
             
-            switch imageResult {
-            case let .success(image):
-                print("Successfully downloaded vote image: \(image)")
-                self.voteImageView.image = image
-            case let .failure(error):
-                print("Error downloading image: \(error)")
+                switch imageResult {
+                case let .success(image):
+                    print("Successfully downloaded vote image: \(image)")
+                    self.voteImageView.image = image
+                case let .failure(error):
+                    print("Error downloading image: \(error)")
+                }
             }
         }
     }
@@ -112,7 +133,8 @@ class CatVotesViewController: UIViewController {
             // landscape orientation
             
             if let images = self.downvoteImages {
-                self.updateVoteImageView(for: images[self.currentDownvoteIndex])
+                let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
+                self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
                 self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
                 self.toggleVoteAssetLeadingConstraint("landscape")
                 self.voteStatusLabel.text = "You downvoted this image!"
@@ -123,7 +145,8 @@ class CatVotesViewController: UIViewController {
             // portrait orientation
             
             if let images = self.upvoteImages {
-                self.updateVoteImageView(for: images[self.currentUpvoteIndex])
+                let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
+                self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
                 self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
                 self.toggleVoteAssetLeadingConstraint("portrait")
                 self.voteStatusLabel.text = "You upvoted this image!"
@@ -155,7 +178,8 @@ class CatVotesViewController: UIViewController {
                     self.currentUpvoteIndex = images.count - 1
                 }
                 
-                self.updateVoteImageView(for: images[self.currentUpvoteIndex])
+                let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
+                self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
             } else {
                 print("error: there are no upvoted images to traverse")
             }
@@ -169,7 +193,8 @@ class CatVotesViewController: UIViewController {
                     self.currentDownvoteIndex = images.count - 1
                 }
                 
-                self.updateVoteImageView(for: images[self.currentDownvoteIndex])
+                let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
+                self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
             } else {
                 print("error: there are no downvoted images to traverse")
             }
@@ -189,7 +214,8 @@ class CatVotesViewController: UIViewController {
                     self.currentUpvoteIndex = 0
                 }
                 
-                self.updateVoteImageView(for: images[self.currentUpvoteIndex])
+                let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
+                self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
             } else {
                 print("error: there are no upvoted images to traverse")
             }
@@ -203,11 +229,30 @@ class CatVotesViewController: UIViewController {
                     self.currentDownvoteIndex = 0
                 }
                 
-                self.updateVoteImageView(for: images[self.currentDownvoteIndex])
+                let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
+                self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
             } else {
                 print("error: there are no downvoted images to traverse")
             }
         }
+    }
+    
+    func isIndexFirst(_ index: Int, _ array: String) -> Bool {
+        if array == "upvotes" {
+            if self.currentUpvoteIndex == 0 {
+                return true
+            } else {
+                return false
+            }
+        } else if array == "downvotes" {
+            if self.currentDownvoteIndex == 0 {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        return false
     }
     
     @IBAction func refreshButtonTapped(_ btn: UIButton) {

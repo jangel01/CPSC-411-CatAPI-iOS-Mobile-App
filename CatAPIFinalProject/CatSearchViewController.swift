@@ -29,7 +29,7 @@ class CatSearchViewController: UIViewController {
     func updateSearchImageView(for image: SearchImagesData) {
         self.catAPIService.downloadSearchImage(for: image) {
             (imageResult) in
-            
+        
             switch imageResult {
             case let .success(image):
                 print("Successfully downloaded search image: \(image)")
@@ -67,7 +67,7 @@ class CatSearchViewController: UIViewController {
             } else {
                 currentImageIndex = catSearchImages.count - 1
             }
-            
+                        
             updateSearchImageView(for: catSearchImages[self.currentImageIndex])
             self.toggleVoteButtons(true)
         } else {
@@ -82,7 +82,7 @@ class CatSearchViewController: UIViewController {
             } else {
                 self.currentImageIndex = 0
             }
-            
+
             updateSearchImageView(for: catSearchImages[self.currentImageIndex])
             self.toggleVoteButtons(true)
         } else {

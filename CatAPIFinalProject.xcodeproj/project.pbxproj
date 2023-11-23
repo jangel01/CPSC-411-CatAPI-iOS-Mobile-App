@@ -19,6 +19,7 @@
 		8034C7B02B0C84C6004C32EC /* CatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C7AF2B0C84C6004C32EC /* CatAPI.swift */; };
 		8034C7B22B0C88C9004C32EC /* CatAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C7B12B0C88C9004C32EC /* CatAPIService.swift */; };
 		807BD5D22B0EED6900981CED /* CatVotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BD5D12B0EED6900981CED /* CatVotesViewController.swift */; };
+		80B95A5F2B0FEE0800004CC9 /* CatPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A5E2B0FEE0800004CC9 /* CatPersistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		8034C7AF2B0C84C6004C32EC /* CatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPI.swift; sourceTree = "<group>"; };
 		8034C7B12B0C88C9004C32EC /* CatAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIService.swift; sourceTree = "<group>"; };
 		807BD5D12B0EED6900981CED /* CatVotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatVotesViewController.swift; sourceTree = "<group>"; };
+		80B95A5E2B0FEE0800004CC9 /* CatPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPersistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				8034C7AF2B0C84C6004C32EC /* CatAPI.swift */,
 				8034C7B12B0C88C9004C32EC /* CatAPIService.swift */,
 				807BD5D12B0EED6900981CED /* CatVotesViewController.swift */,
+				80B95A5E2B0FEE0800004CC9 /* CatPersistence.swift */,
 			);
 			path = CatAPIFinalProject;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80B95A5F2B0FEE0800004CC9 /* CatPersistence.swift in Sources */,
 				8034C7422B0C3FA3004C32EC /* CatSearchViewController.swift in Sources */,
 				807BD5D22B0EED6900981CED /* CatVotesViewController.swift in Sources */,
 				8034C7B02B0C84C6004C32EC /* CatAPI.swift in Sources */,
