@@ -13,6 +13,8 @@ class CatVotesViewController: UIViewController {
     @IBOutlet var voteStatusLabel: UILabel!
     // progammatic view
     var voteStatusAsset: UIImageView!
+    var assetLeadingConstraintPortrait: NSLayoutConstraint!
+    var assetLeadingConstraintLandscape: NSLayoutConstraint!
     
     var catAPIService: CatAPIService!
     
@@ -38,11 +40,11 @@ class CatVotesViewController: UIViewController {
         self.view.addSubview(self.voteStatusAsset)
         
         let assetTopConstraint = self.voteStatusAsset.topAnchor.constraint(equalTo: self.voteStatusLabel.bottomAnchor, constant: 30)
-        let assetLeadingConstraint = self.voteStatusAsset.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
+        self.assetLeadingConstraintPortrait = self.voteStatusAsset.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
+        self.assetLeadingConstraintLandscape = self.voteStatusAsset.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor, constant: 10)
         let assetTrailingConstraint = self.voteStatusAsset.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 10)
         
         assetTopConstraint.isActive = true
-        assetLeadingConstraint.isActive = true
         assetTrailingConstraint.isActive = true
     }
     
@@ -65,7 +67,8 @@ class CatVotesViewController: UIViewController {
                     
                     if let image = self.upvoteImages {
                         self.updateVoteImageView(for: image.first!)
-                        self.voteStatusAsset.image = UIImage(named: "thumbs-up.ng")
+                        self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
+                        self.toggleVoteAssetLeadingConstraint("portrait")
                     } else {
                         print("there are no images that are upvoted")
                     }
@@ -75,6 +78,7 @@ class CatVotesViewController: UIViewController {
                     if let image = self.downvoteImages {
                         self.updateVoteImageView(for: image.first!)
                         self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
+                        self.toggleVoteAssetLeadingConstraint("landscape")
                     } else {
                         print("there are no images that are downvoted")
                     }
@@ -96,6 +100,16 @@ class CatVotesViewController: UIViewController {
             case let .failure(error):
                 print("Error downloading image: \(error)")
             }
+        }
+    }
+    
+    func toggleVoteAssetLeadingConstraint(_ s: String) {
+        if s == "portrait" {
+            self.assetLeadingConstraintPortrait.isActive = true
+            self.assetLeadingConstraintLandscape.isActive = false
+        } else if s == "landscape" {
+            self.assetLeadingConstraintPortrait.isActive = false
+            self.assetLeadingConstraintLandscape.isActive = true
         }
     }
     
