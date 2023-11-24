@@ -20,6 +20,9 @@
 		8034C7B22B0C88C9004C32EC /* CatAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C7B12B0C88C9004C32EC /* CatAPIService.swift */; };
 		807BD5D22B0EED6900981CED /* CatVotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BD5D12B0EED6900981CED /* CatVotesViewController.swift */; };
 		80B95A5F2B0FEE0800004CC9 /* CatPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A5E2B0FEE0800004CC9 /* CatPersistence.swift */; };
+		80B95A612B10347B00004CC9 /* CatSaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A602B10347B00004CC9 /* CatSaveViewController.swift */; };
+		80B95A672B103C8200004CC9 /* CatRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A662B103C8200004CC9 /* CatRepo.swift */; };
+		80B95A6A2B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A682B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		8034C7B12B0C88C9004C32EC /* CatAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIService.swift; sourceTree = "<group>"; };
 		807BD5D12B0EED6900981CED /* CatVotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatVotesViewController.swift; sourceTree = "<group>"; };
 		80B95A5E2B0FEE0800004CC9 /* CatPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPersistence.swift; sourceTree = "<group>"; };
+		80B95A602B10347B00004CC9 /* CatSaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSaveViewController.swift; sourceTree = "<group>"; };
+		80B95A662B103C8200004CC9 /* CatRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatRepo.swift; sourceTree = "<group>"; };
+		80B95A692B103D0A00004CC9 /* MyDatabaseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDatabaseModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		8034C73C2B0C3FA3004C32EC /* CatAPIFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				80B95A622B1036EF00004CC9 /* db */,
 				8034C73D2B0C3FA3004C32EC /* AppDelegate.swift */,
 				8034C73F2B0C3FA3004C32EC /* SceneDelegate.swift */,
 				8034C7412B0C3FA3004C32EC /* CatSearchViewController.swift */,
@@ -118,6 +125,7 @@
 				8034C7B12B0C88C9004C32EC /* CatAPIService.swift */,
 				807BD5D12B0EED6900981CED /* CatVotesViewController.swift */,
 				80B95A5E2B0FEE0800004CC9 /* CatPersistence.swift */,
+				80B95A602B10347B00004CC9 /* CatSaveViewController.swift */,
 			);
 			path = CatAPIFinalProject;
 			sourceTree = "<group>";
@@ -137,6 +145,15 @@
 				8034C7602B0C3FA4004C32EC /* CatAPIFinalProjectUITestsLaunchTests.swift */,
 			);
 			path = CatAPIFinalProjectUITests;
+			sourceTree = "<group>";
+		};
+		80B95A622B1036EF00004CC9 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				80B95A662B103C8200004CC9 /* CatRepo.swift */,
+				80B95A682B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld */,
+			);
+			path = db;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,8 +289,11 @@
 			files = (
 				80B95A5F2B0FEE0800004CC9 /* CatPersistence.swift in Sources */,
 				8034C7422B0C3FA3004C32EC /* CatSearchViewController.swift in Sources */,
+				80B95A672B103C8200004CC9 /* CatRepo.swift in Sources */,
 				807BD5D22B0EED6900981CED /* CatVotesViewController.swift in Sources */,
 				8034C7B02B0C84C6004C32EC /* CatAPI.swift in Sources */,
+				80B95A612B10347B00004CC9 /* CatSaveViewController.swift in Sources */,
+				80B95A6A2B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld in Sources */,
 				8034C73E2B0C3FA3004C32EC /* AppDelegate.swift in Sources */,
 				8034C7B22B0C88C9004C32EC /* CatAPIService.swift in Sources */,
 				8034C7402B0C3FA3004C32EC /* SceneDelegate.swift in Sources */,
@@ -612,6 +632,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		80B95A682B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				80B95A692B103D0A00004CC9 /* MyDatabaseModel.xcdatamodel */,
+			);
+			currentVersion = 80B95A692B103D0A00004CC9 /* MyDatabaseModel.xcdatamodel */;
+			path = MyDatabaseModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8034C7322B0C3FA3004C32EC /* Project object */;
 }

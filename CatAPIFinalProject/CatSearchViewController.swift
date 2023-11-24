@@ -12,8 +12,13 @@ class CatSearchViewController: UIViewController {
     @IBOutlet var searchImageView: UIImageView!
     @IBOutlet var downvoteButton: UIButton!
     @IBOutlet var upvoteButton: UIButton!
+    @IBOutlet var nameInput: UITextField!
+    @IBOutlet var amountInput: UITextField!
     
     var catAPIService: CatAPIService!
+    var catRepo: CatRepo!
+    var currentImageUrl: URL?
+    var currentImageData: Data?
     
     var catSearchImages: [SearchImagesData]? = nil
     var currentImageIndex = 0
@@ -22,11 +27,15 @@ class CatSearchViewController: UIViewController {
         super.viewDidLoad()
         
         self.catAPIService = CatAPIService()
+        self.catRepo = CatRepo {
+            (initResult) in
+        }
         
         self.fetchCatImages()
     }
     
     func updateSearchImageView(for image: SearchImagesData) {
+        self.currentImageUrl = image.url
         self.catAPIService.downloadSearchImage(for: image) {
             (imageResult) in
         
@@ -34,6 +43,17 @@ class CatSearchViewController: UIViewController {
             case let .success(image):
                 print("Successfully downloaded search image: \(image)")
                 self.searchImageView.image = image
+                
+                // try converting to jpg first
+                if let imageData = image.jpegData(compressionQuality: 1.0) {
+                    self.currentImageData = imageData
+                }
+                // try converting to png
+                else if let imageData = image.pngData() {
+                    self.currentImageData = imageData
+                } else {
+                    print("Error grabbing current image data")
+                }
             case let .failure(error):
                 print("Error downloading image: \(error)")
             }
@@ -142,6 +162,41 @@ class CatSearchViewController: UIViewController {
         self.upvoteButton.isEnabled = btnState
         self.downvoteButton.isEnabled = btnState
     }
-
+    
+    private func viewToCat(cat: Cat) -> Bool {
+        
+        if let name = self.nameInput.text, let amount = self.amountInput.text {
+            cat.name = name
+            cat.amount = NSDecimalNumber(string: amount)
+            
+            if let urlAsString = currentImageUrl?.absoluteString, let data = self.currentImageData {
+                let url = URL(string: urlAsString)
+                if let urlSafe = url {
+                    let filename = urlSafe.lastPathComponent
+                    cat.imgPath = urlAsString
+                    CatPersistence.saveFileToUserFolder(fileName: filename, data: data)
+                    
+                    let alert = UIAlertController(title: "Cat saved!", message: "You have saved the cat image and information", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    print("error: couldn't save to user folder -- url is innvalid")
+                }
+            }
+            return true
+        } else {
+            print("Unable to parse Cat from views; one or more was blank or invalid, or there is an issue with the image url")
+        }
+        return false
+    }
+    
+    @IBAction func saveButtonTapped(_ btn: UIButton) {
+        let cat = self.catRepo.makeCat()
+        if (self.viewToCat(cat: cat)) {
+            self.catRepo.saveCat(cat: cat) {
+                (saveResult) in
+            }
+        }
+    }
 }
 

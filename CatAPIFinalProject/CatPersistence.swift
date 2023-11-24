@@ -146,4 +146,16 @@ class CatPersistence {
                 print("Refusing to save nil file data to user folder")
             }
         }
+    
+    public static func loadFileFromUserFolder(fileName: String) -> Data? {
+        let fileURL = CatPersistence.makeFileDocumentsURL(fileName)
+        do {
+            let fileData = try Data(contentsOf: fileURL)
+            print("Successfully loaded image file \"\(fileName)\" from the user directory: \(fileURL)")
+            return fileData
+        } catch {
+            print("Failed to load image file \"\(fileName)\": \(error)")
+            return nil
+        }
+    }
 }
