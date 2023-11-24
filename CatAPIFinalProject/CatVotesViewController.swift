@@ -104,6 +104,14 @@ class CatVotesViewController: UIViewController {
                 } else {
                     if let data = CatPersistence.loadFileFromCache(urlAsString) {
                         self.voteImageView.image = UIImage(data: data)
+                        
+                        let url = URL(string: urlAsString)
+                        if let urlSafe = url {
+                            let filename = urlSafe.lastPathComponent
+                            CatPersistence.saveFileToUserFolder(fileName: filename, data: data)
+                        } else {
+                            print("error: couldn't save to user folder -- url is innvalid")
+                        }
                     } else {
                         print("Failed to load from cache: \(urlAsString)")
                     }
