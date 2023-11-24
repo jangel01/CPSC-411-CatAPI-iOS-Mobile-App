@@ -23,15 +23,49 @@ class CatSearchViewController: UIViewController {
     var catSearchImages: [SearchImagesData]? = nil
     var currentImageIndex = 0
     
+    static let NAME_INPUT_KEY = "text-input-state"
+    static let AMOUNT_INPUT_KEY = "text-imput-state"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loadAllPreferences()
         self.catAPIService = CatAPIService()
         self.catRepo = CatRepo {
             (initResult) in
         }
-        
+        self.nameInput.placeholder = "Ex. John"
+        self.amountInput.placeholder = "$10.00"
         self.fetchCatImages()
+    }
+    
+    @IBAction func saveAllPreferences() {
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(
+            self.nameInput.text, forKey: CatSearchViewController.NAME_INPUT_KEY
+            )
+        
+        defaults.set(
+            self.amountInput.text, forKey: CatSearchViewController.AMOUNT_INPUT_KEY
+            )
+    }
+    
+    func loadAllPreferences() {
+        
+        let defaults = UserDefaults.standard
+        
+        if (defaults.object(forKey: CatSearchViewController.NAME_INPUT_KEY) != nil)
+        {
+            self.nameInput.text = defaults.string(forKey: CatSearchViewController.NAME_INPUT_KEY)
+        }
+        
+        if (defaults.object(forKey: CatSearchViewController.AMOUNT_INPUT_KEY) != nil)
+        {
+            self.amountInput.text = defaults.string(forKey: CatSearchViewController.AMOUNT_INPUT_KEY)
+        }
+        
     }
     
     func updateSearchImageView(for image: SearchImagesData) {
@@ -191,6 +225,7 @@ class CatSearchViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ btn: UIButton) {
+        self.saveAllPreferences()
         let cat = self.catRepo.makeCat()
         if (self.viewToCat(cat: cat)) {
             self.catRepo.saveCat(cat: cat) {
