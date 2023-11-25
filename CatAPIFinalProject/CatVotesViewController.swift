@@ -65,24 +65,37 @@ class CatVotesViewController: UIViewController {
                 if size.width < size.height {
                     // portrait
                     
+                    self.toggleVoteAssetLeadingConstraint("portrait")
+
                     if let images = self.upvoteImages {
-                        self.updateVoteImageView(for: images.first!, true)
-                        self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
-                        self.toggleVoteAssetLeadingConstraint("portrait")
-                        self.voteStatusLabel.text = "You upvoted this image!"
+                        if !images.isEmpty {
+                            self.updateVoteImageView(for: images.first!, true)
+                            self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
+                            self.voteStatusLabel.text = "You upvoted this image!"
+                        } else {
+                            print("there are no upvoted images to view")
+                            self.hideViews()
+                        }
+                        
                     } else {
-                        print("there are no images that are upvoted")
+                        print("the upvote image array seems to be nil")
                     }
                 } else {
                     // landscape
                     
+                    self.toggleVoteAssetLeadingConstraint("landscape")
+                    
                     if let images = self.downvoteImages {
-                        self.updateVoteImageView(for: images.first!, true)
-                        self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
-                        self.toggleVoteAssetLeadingConstraint("landscape")
-                        self.voteStatusLabel.text = "You downvoted this image!"
+                        if !images.isEmpty {
+                            self.updateVoteImageView(for: images.first!, true)
+                            self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
+                            self.voteStatusLabel.text = "You downvoted this image!"
+                        } else {
+                            print("there are no downvoted images to view")
+                            self.hideViews()
+                        }
                     } else {
-                        print("there are no images that are downvoted")
+                        print("the downvote image array seems to be nil")
                     }
                 }
             case let .failure(error):
@@ -132,26 +145,38 @@ class CatVotesViewController: UIViewController {
         if self.traitCollection.verticalSizeClass == .compact {
             // landscape orientation
             
+            self.toggleVoteAssetLeadingConstraint("landscape")
+            
             if let images = self.downvoteImages {
-                let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
-                self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
-                self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
-                self.toggleVoteAssetLeadingConstraint("landscape")
-                self.voteStatusLabel.text = "You downvoted this image!"
+                if !images.isEmpty {
+                    let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
+                    self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
+                    self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
+                    self.voteStatusLabel.text = "You downvoted this image!"
+                } else {
+                    print("there are no downvoted images to view")
+                    self.hideViews()
+                }
             } else {
-                print("there are no images that are downvoted")
+                print("the downvoted image array seems to be nil")
             }
         } else {
             // portrait orientation
             
+            self.toggleVoteAssetLeadingConstraint("portrait")
+
             if let images = self.upvoteImages {
-                let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
-                self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
-                self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
-                self.toggleVoteAssetLeadingConstraint("portrait")
-                self.voteStatusLabel.text = "You upvoted this image!"
+                if !images.isEmpty {
+                    let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
+                    self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
+                    self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
+                    self.voteStatusLabel.text = "You upvoted this image!"
+                } else {
+                    print("there are no upvoted images to view")
+                    self.hideViews()
+                }
             } else {
-                print("there are no images that are upvoted")
+                print("the upvoted image array seems to be nil")
             }
         }
     }
@@ -253,6 +278,12 @@ class CatVotesViewController: UIViewController {
         }
         
         return false
+    }
+    
+    func hideViews() {
+        self.voteStatusAsset.image = nil
+        self.voteImageView.image = nil
+        self.voteStatusLabel.text = ""
     }
     
     @IBAction func refreshButtonTapped(_ btn: UIButton) {

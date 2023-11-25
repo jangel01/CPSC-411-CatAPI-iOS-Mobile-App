@@ -28,12 +28,13 @@ class CatSaveViewController: UIViewController {
     
     private func catToViews(cat: Cat?) {
         if let cat = cat {
-            self.nameLabel.text = cat.name
-            self.amountLabel.text = cat.amount?.stringValue
             self.imageString = cat.imgPath
             
             let imageData = CatPersistence.loadFileFromUserFolder(fileName: self.imageString)
             if let data = imageData {
+                self.nameLabel.text = cat.name
+                self.amountLabel.text = cat.amount?.stringValue
+
                 self.imageView.image = UIImage(data: data)
             }
             

@@ -105,8 +105,11 @@ class CatSearchViewController: UIViewController {
                 self.currentImageIndex = 0
                 
                 if !images.isEmpty {
-                    self.updateSearchImageView(for: images.first!)
+                    self.updateSearchImageView(for: images[self.currentImageIndex])
                     self.toggleVoteButtons(true)
+                } else {
+                    print("there are no search images to view")
+                    self.hideViews()
                 }
             case let .failure(error):
                 print("Error fetching random cat images: \(error)")
@@ -116,31 +119,40 @@ class CatSearchViewController: UIViewController {
     
     @IBAction func prevButtonTapped(_ btn: UIButton) {
         if let catSearchImages = self.catSearchImages {
-            if currentImageIndex > 0 {
-                self.currentImageIndex -= 1
+            if !catSearchImages.isEmpty {
+                if currentImageIndex > 0 {
+                    self.currentImageIndex -= 1
+                } else {
+                    currentImageIndex = catSearchImages.count - 1
+                }
+                            
+                updateSearchImageView(for: catSearchImages[self.currentImageIndex])
+                self.toggleVoteButtons(true)
             } else {
-                currentImageIndex = catSearchImages.count - 1
+                print("error: there are no search image to traverse")
             }
-                        
-            updateSearchImageView(for: catSearchImages[self.currentImageIndex])
-            self.toggleVoteButtons(true)
         } else {
-            print("error: there are no images to traverse")
+            print("error: the search image array seems to be nil")
         }
     }
     
     @IBAction func nextButtonTapped(_ btn: UIButton) {
         if let catSearchImages = self.catSearchImages {
-            if self.currentImageIndex < catSearchImages.count - 1 {
-                self.currentImageIndex += 1
-            } else {
-                self.currentImageIndex = 0
-            }
+            if !catSearchImages.isEmpty {
+                if self.currentImageIndex < catSearchImages.count - 1 {
+                    self.currentImageIndex += 1
+                } else {
+                    self.currentImageIndex = 0
+                }
 
-            updateSearchImageView(for: catSearchImages[self.currentImageIndex])
-            self.toggleVoteButtons(true)
+                updateSearchImageView(for: catSearchImages[self.currentImageIndex])
+                self.toggleVoteButtons(true)
+            } else {
+                print("erro: there are no search image to traverse")
+            }
+            
         } else {
-            print("error: there are no images to traverse")
+            print("error: the search image array seems to be nil")
         }
     }
     
@@ -150,45 +162,53 @@ class CatSearchViewController: UIViewController {
     
     @IBAction func upvoteButtonTapped(_ btn: UIButton) {
         if let catSearchImages = self.catSearchImages {
-            self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: 1) {
-                (voteResult) in
-                
-                switch voteResult {
-                case let .success(result):
-                    print("upvoted cat image! \(result.imageId), status: \(result.message)")
-                    self.toggleVoteButtons(false)
+            if !catSearchImages.isEmpty {
+                self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: 1) {
+                    (voteResult) in
                     
-                    let alert = UIAlertController(title: "Vote recorded!", message: "You have upvoted the image", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                case let .failure(error):
-                    print("Failed to upvote image: \(error)")
+                    switch voteResult {
+                    case let .success(result):
+                        print("upvoted cat image! \(result.imageId), status: \(result.message)")
+                        self.toggleVoteButtons(false)
+                        
+                        let alert = UIAlertController(title: "Vote recorded!", message: "You have upvoted the image", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    case let .failure(error):
+                        print("Failed to upvote image: \(error)")
+                    }
                 }
+            } else {
+                print("error: there is no search image to upvote")
             }
         } else {
-            print("error: there is no image to upvote")
+            print("error: search image array seems to be nil")
         }
     }
     
     @IBAction func downvoteButtonTapped(_ btn: UIButton) {
         if let catSearchImages = self.catSearchImages {
-            self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: -1) {
-                (voteResult) in
-                
-                switch voteResult {
-                case let .success(result):
-                    print("downvoted cat image! \(result.imageId), status: \(result.message)")
-                    self.toggleVoteButtons(false)
+            if !catSearchImages.isEmpty {
+                self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: -1) {
+                    (voteResult) in
                     
-                    let alert = UIAlertController(title: "Vote recorded!", message: "You have downvoted the image", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                case let .failure(error):
-                    print("Failed to downvote image: \(error)")
+                    switch voteResult {
+                    case let .success(result):
+                        print("downvoted cat image! \(result.imageId), status: \(result.message)")
+                        self.toggleVoteButtons(false)
+                        
+                        let alert = UIAlertController(title: "Vote recorded!", message: "You have downvoted the image", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    case let .failure(error):
+                        print("Failed to downvote image: \(error)")
+                    }
                 }
+            } else {
+                print("error: there is no search image to downvote")
             }
         } else {
-            print("error: there is no image to downvote")
+            print("error: the search image aaray seems to be nil")
         }
     }
     
@@ -199,11 +219,11 @@ class CatSearchViewController: UIViewController {
     
     private func viewToCat(cat: Cat) -> Bool {
         
-        if let name = self.nameInput.text, let amount = self.amountInput.text {
-            cat.name = name
-            cat.amount = NSDecimalNumber(string: amount)
-            
+        if let name = self.nameInput.text, let amount = self.amountInput.text, !name.isEmpty, !amount.isEmpty {
             if let urlAsString = currentImageUrl?.absoluteString, let data = self.currentImageData {
+                cat.name = name
+                cat.amount = NSDecimalNumber(string: amount)
+
                 let url = URL(string: urlAsString)
                 if let urlSafe = url {
                     let filename = urlSafe.lastPathComponent
@@ -231,6 +251,10 @@ class CatSearchViewController: UIViewController {
                 (saveResult) in
             }
         }
+    }
+    
+    func hideViews() {
+        self.searchImageView = nil
     }
 }
 
