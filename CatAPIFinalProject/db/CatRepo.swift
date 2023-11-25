@@ -122,4 +122,26 @@ class CatRepo {
             }
         }
     }
+    
+    func deleteCat(cat: Cat, completion: @escaping(Result<[Cat], Error>) -> Void) {
+        self.context.perform {
+            do {
+                self.context.delete(cat)
+                try self.context.save()
+                print("CatRepo::deleteCat deleted: \(cat)")
+                self.loadAllCats {
+                    (loadResult) in
+                    
+                    switch (loadResult) {
+                    case let.success(cats):
+                        completion(.success(cats))
+                    case let .failure(error):
+                        completion(.failure(error))
+                    }
+                }
+            } catch {
+                print("CatRepo::deleteCat caught error: \(error)")
+            }
+        }
+    }
 }

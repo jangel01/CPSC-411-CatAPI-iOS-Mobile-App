@@ -30,12 +30,24 @@ class CatSaveViewController: UIViewController {
         if let cat = cat {
             self.imageString = cat.imgPath
             
-            let imageData = CatPersistence.loadFileFromUserFolder(fileName: self.imageString)
-            if let data = imageData {
-                self.nameLabel.text = cat.name
-                self.amountLabel.text = cat.amount?.stringValue
+            if self.imageString != nil {
+                let imageData = CatPersistence.loadFileFromUserFolder(fileName: self.imageString)
+                if let data = imageData {
+                    self.nameLabel.text = cat.name
+                    self.amountLabel.text = cat.amount?.stringValue
 
-                self.imageView.image = UIImage(data: data)
+                    self.imageView.image = UIImage(data: data)
+                }
+            } else {
+                // cat save is corrupted -- better to just delete it
+                
+                if let cat = self.catRepo.currentCat() {
+                    self.catRepo.deleteCat(cat: cat) {
+                        (deleteResult) in
+                        
+                        self.currentCatToViews()
+                    }
+                }
             }
             
         } else {
