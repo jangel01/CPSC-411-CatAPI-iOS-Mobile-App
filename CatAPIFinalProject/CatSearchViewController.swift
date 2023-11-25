@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class CatSearchViewController: UIViewController {
+class CatSearchViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var searchImageView: UIImageView!
     @IBOutlet var downvoteButton: UIButton!
@@ -40,6 +40,34 @@ class CatSearchViewController: UIViewController {
         self.nameInput.placeholder = "Ex. John"
         self.amountInput.placeholder = "10.00"
         self.fetchCatImages()
+        
+        nameInput.delegate = self
+        amountInput.delegate = self
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == amountInput{
+            let currentLocale = Locale.current
+            let decimalSeparator = currentLocale.decimalSeparator ?? "."
+            
+            let existingTextHasDecimal = textField.text?.range(of: decimalSeparator)
+            let replacementTextHasDecimal = string.range(of: decimalSeparator)
+            
+            if existingTextHasDecimal != nil,
+               replacementTextHasDecimal != nil {
+                return false
+            } else {
+                return true
+            }
+        }
+        else if textField == nameInput{
+            let letters = CharacterSet.letters
+            if string.rangeOfCharacter(from: letters.inverted) != nil{
+                return false
+            }
+            return true
+        }
+        return false
     }
     
     @IBAction func saveAllPreferences(_ sender: UITextField) {
