@@ -98,7 +98,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="saveAllPreferences" destination="BYZ-38-t0r" eventType="editingDidEnd" id="BaB-2z-jsO"/>
+                                                    <action selector="saveAllPreferences:" destination="BYZ-38-t0r" eventType="editingChanged" id="jJV-zy-1mH"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -117,7 +117,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="saveAllPreferences" destination="BYZ-38-t0r" eventType="editingDidEnd" id="jNp-Rn-1jw"/>
+                                                    <action selector="saveAllPreferences:" destination="BYZ-38-t0r" eventType="editingChanged" id="7u8-RJ-Xl0"/>
                                                 </connections>
                                             </textField>
                                         </subviews>

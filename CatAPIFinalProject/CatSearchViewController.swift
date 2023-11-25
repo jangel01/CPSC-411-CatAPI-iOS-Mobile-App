@@ -39,7 +39,7 @@ class CatSearchViewController: UIViewController {
         self.fetchCatImages()
     }
     
-    @IBAction func saveAllPreferences() {
+    @IBAction func saveAllPreferences(_ sender: UITextField) {
         
         let defaults = UserDefaults.standard
         
