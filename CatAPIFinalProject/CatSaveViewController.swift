@@ -37,17 +37,14 @@ class CatSaveViewController: UIViewController {
                     self.amountLabel.text = cat.amount?.stringValue
 
                     self.imageView.image = UIImage(data: data)
+                } else {
+                    // image is missing from user directory -- delete cat
+                    self.deleteCorruptedCat()
                 }
             } else {
-                // cat save is corrupted -- better to just delete it
+                // url image is missing -- better to just delete cat
                 
-                if let cat = self.catRepo.currentCat() {
-                    self.catRepo.deleteCat(cat: cat) {
-                        (deleteResult) in
-                        
-                        self.currentCatToViews()
-                    }
-                }
+                self.deleteCorruptedCat()
             }
             
         } else {
@@ -55,6 +52,16 @@ class CatSaveViewController: UIViewController {
             self.amountLabel.text = ""
             self.imageString = ""
             self.imageView.image = nil
+        }
+    }
+    
+    func deleteCorruptedCat() {
+        if let cat = self.catRepo.currentCat() {
+            self.catRepo.deleteCat(cat: cat) {
+                (deleteResult) in
+                
+                self.currentCatToViews()
+            }
         }
     }
     
