@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CatSearchViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class CatSearchViewController: UIViewController {
     
     var catSearchImages: [SearchImagesData]? = nil
     var currentImageIndex = 0
+    var audio: AVAudioPlayer?
     
     static let NAME_INPUT_KEY = "text-input-state"
     static let AMOUNT_INPUT_KEY = "text-imput-state"
@@ -168,6 +170,7 @@ class CatSearchViewController: UIViewController {
     }
     
     @IBAction func upvoteButtonTapped(_ btn: UIButton) {
+        self.triggerSound(str: "hungry")
         if let catSearchImages = self.catSearchImages {
             if !catSearchImages.isEmpty {
                 self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: 1) {
@@ -194,6 +197,7 @@ class CatSearchViewController: UIViewController {
     }
     
     @IBAction func downvoteButtonTapped(_ btn: UIButton) {
+        self.triggerSound(str: "angry")
         if let catSearchImages = self.catSearchImages {
             if !catSearchImages.isEmpty {
                 self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: -1) {
@@ -254,7 +258,9 @@ class CatSearchViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ btn: UIButton) {
+        self.triggerSound(str: "purr")
         let cat = self.catRepo.makeCat()
+        
         if (self.viewToCat(cat: cat)) {
             self.catRepo.saveCat(cat: cat) {
                 (saveResult) in
@@ -271,6 +277,24 @@ class CatSearchViewController: UIViewController {
         self.nameInput.text = ""
         // just pass any either input field -- doesn't matter
         self.saveAllPreferences(self.nameInput)
+    }
+    
+    func triggerSound(str: String?) {
+        var effect: String?
+        switch str {
+        case "angry": effect = Bundle.main.path(forResource: "meow/mixkit-angry-cartoon-kitty-meow-94", ofType: "wav")
+        case "purr": effect = Bundle.main.path(forResource: "meow/mixkit-big-wild-cat-long-purr-96", ofType: "wav")
+        case "hungry": effect = Bundle.main.path(forResource: "meow/mixkit-domestic-cat-hungry-meow-45", ofType: "wav")
+        default: print("error")
+        }
+        
+        let soundURL = URL(fileURLWithPath: effect ?? "")
+        do {
+        audio = try AVAudioPlayer(contentsOf: soundURL)
+        audio?.play()
+        } catch {
+            print("error")
+        }
     }
 }
 

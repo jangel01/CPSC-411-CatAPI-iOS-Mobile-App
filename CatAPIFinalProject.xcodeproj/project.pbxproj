@@ -23,6 +23,7 @@
 		80B95A612B10347B00004CC9 /* CatSaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A602B10347B00004CC9 /* CatSaveViewController.swift */; };
 		80B95A672B103C8200004CC9 /* CatRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A662B103C8200004CC9 /* CatRepo.swift */; };
 		80B95A6A2B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A682B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld */; };
+		E2F0BF6F2B1284F200CB1184 /* meow in Resources */ = {isa = PBXBuildFile; fileRef = E2F0BF6E2B1284F200CB1184 /* meow */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		80B95A602B10347B00004CC9 /* CatSaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSaveViewController.swift; sourceTree = "<group>"; };
 		80B95A662B103C8200004CC9 /* CatRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatRepo.swift; sourceTree = "<group>"; };
 		80B95A692B103D0A00004CC9 /* MyDatabaseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDatabaseModel.xcdatamodel; sourceTree = "<group>"; };
+		E2F0BF6E2B1284F200CB1184 /* meow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = meow; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				807BD5D12B0EED6900981CED /* CatVotesViewController.swift */,
 				80B95A5E2B0FEE0800004CC9 /* CatPersistence.swift */,
 				80B95A602B10347B00004CC9 /* CatSaveViewController.swift */,
+				E2F0BF6E2B1284F200CB1184 /* meow */,
 			);
 			path = CatAPIFinalProject;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2F0BF6F2B1284F200CB1184 /* meow in Resources */,
 				8034C74A2B0C3FA4004C32EC /* LaunchScreen.storyboard in Resources */,
 				8034C7472B0C3FA4004C32EC /* Assets.xcassets in Resources */,
 				8034C7452B0C3FA3004C32EC /* Main.storyboard in Resources */,
@@ -480,6 +484,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -489,7 +494,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -507,6 +512,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,7 +522,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
