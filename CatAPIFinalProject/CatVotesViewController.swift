@@ -197,31 +197,40 @@ class CatVotesViewController: UIViewController {
         if size.width < size.height {
             // portrait
             if let images = self.upvoteImages {
-                if self.currentUpvoteIndex > 0 {
-                    self.currentUpvoteIndex -= 1
+                if !images.isEmpty {
+                    if self.currentUpvoteIndex > 0 {
+                        self.currentUpvoteIndex -= 1
+                    } else {
+                        self.currentUpvoteIndex = images.count - 1
+                    }
+                    
+                    let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
+                    self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
                 } else {
-                    self.currentUpvoteIndex = images.count - 1
+                    print("error: there are no upvoted images to traverse")
                 }
-                
-                let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
-                self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
             } else {
-                print("error: there are no upvoted images to traverse")
+                print("error: the upvote image array seems to be nil")
             }
         } else {
             // landscape
             
             if let images = self.downvoteImages {
-                if self.currentDownvoteIndex > 0 {
-                    self.currentDownvoteIndex -= 1
+                if !images.isEmpty {
+                    if self.currentDownvoteIndex > 0 {
+                        self.currentDownvoteIndex -= 1
+                    } else {
+                        self.currentDownvoteIndex = images.count - 1
+                    }
+                    
+                    let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
+                    self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
+
                 } else {
-                    self.currentDownvoteIndex = images.count - 1
+                    print("error: there are no downvoted images to traverse")
                 }
-                
-                let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
-                self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
             } else {
-                print("error: there are no downvoted images to traverse")
+                print("error: the downvote image array seems to be nil")
             }
         }
     }
@@ -233,31 +242,41 @@ class CatVotesViewController: UIViewController {
             // portrait
             
             if let images = self.upvoteImages {
-                if self.currentUpvoteIndex < images.count - 1 {
-                    self.currentUpvoteIndex += 1
+                if !images.isEmpty {
+                    if self.currentUpvoteIndex < images.count - 1 {
+                        self.currentUpvoteIndex += 1
+                    } else {
+                        self.currentUpvoteIndex = 0
+                    }
+                    
+                    let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
+                    self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
                 } else {
-                    self.currentUpvoteIndex = 0
+                    print("error: there are no upvoted images to traverse")
                 }
                 
-                let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
-                self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
             } else {
-                print("error: there are no upvoted images to traverse")
+                print("error: the upvote image array seems to be nil")
             }
         } else {
             // landscape
             
             if let images = self.downvoteImages {
-                if self.currentDownvoteIndex < images.count - 1 {
-                    self.currentDownvoteIndex += 1
+                if !images.isEmpty {
+                    if self.currentDownvoteIndex < images.count - 1 {
+                        self.currentDownvoteIndex += 1
+                    } else {
+                        self.currentDownvoteIndex = 0
+                    }
+                    
+                    let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
+                    self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
                 } else {
-                    self.currentDownvoteIndex = 0
+                    print("error: there are no downvoted images to traverse")
                 }
                 
-                let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
-                self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
             } else {
-                print("error: there are no downvoted images to traverse")
+                print("error: the downvote image array seems to be nil")
             }
         }
     }

@@ -14,6 +14,7 @@ class CatSearchViewController: UIViewController {
     @IBOutlet var upvoteButton: UIButton!
     @IBOutlet var nameInput: UITextField!
     @IBOutlet var amountInput: UITextField!
+    @IBOutlet var saveButton: UIButton!
     
     var catAPIService: CatAPIService!
     var catRepo: CatRepo!
@@ -35,7 +36,7 @@ class CatSearchViewController: UIViewController {
             (initResult) in
         }
         self.nameInput.placeholder = "Ex. John"
-        self.amountInput.placeholder = "$10.00"
+        self.amountInput.placeholder = "10.00"
         self.fetchCatImages()
     }
     
@@ -107,6 +108,8 @@ class CatSearchViewController: UIViewController {
                 if !images.isEmpty {
                     self.updateSearchImageView(for: images[self.currentImageIndex])
                     self.toggleVoteButtons(true)
+                    self.saveButton.isEnabled = true
+                    self.resetInputs()
                 } else {
                     print("there are no search images to view")
                     self.hideViews()
@@ -128,6 +131,8 @@ class CatSearchViewController: UIViewController {
                             
                 updateSearchImageView(for: catSearchImages[self.currentImageIndex])
                 self.toggleVoteButtons(true)
+                self.resetInputs()
+                self.saveButton.isEnabled = true
             } else {
                 print("error: there are no search image to traverse")
             }
@@ -147,6 +152,8 @@ class CatSearchViewController: UIViewController {
 
                 updateSearchImageView(for: catSearchImages[self.currentImageIndex])
                 self.toggleVoteButtons(true)
+                self.resetInputs()
+                self.saveButton.isEnabled = true
             } else {
                 print("erro: there are no search image to traverse")
             }
@@ -233,6 +240,8 @@ class CatSearchViewController: UIViewController {
                     let alert = UIAlertController(title: "Cat saved!", message: "You have saved the cat image and information", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
+                    
+                    self.saveButton.isEnabled = false
                 } else {
                     print("error: couldn't save to user folder -- url is innvalid")
                 }
@@ -255,6 +264,13 @@ class CatSearchViewController: UIViewController {
     
     func hideViews() {
         self.searchImageView = nil
+    }
+    
+    func resetInputs() {
+        self.amountInput.text = ""
+        self.nameInput.text = ""
+        // just pass any either input field -- doesn't matter
+        self.saveAllPreferences(self.nameInput)
     }
 }
 
