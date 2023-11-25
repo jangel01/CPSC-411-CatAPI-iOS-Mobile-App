@@ -225,7 +225,6 @@ class CatSearchViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ btn: UIButton) {
-        self.saveAllPreferences()
         let cat = self.catRepo.makeCat()
         if (self.viewToCat(cat: cat)) {
             self.catRepo.saveCat(cat: cat) {
