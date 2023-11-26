@@ -1,0 +1,114 @@
+
+/* Clase = "UIButton"; configuration.title = "Reroll"; ObjectID = "1dg-rT-7Ye"; */
+"1dg-rT-7Ye.configuration.title" = "Volver a lanzar";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "1dg-rT-7Ye"; */
+"1dg-rT-7Ye.normalTitle" = "Botón";
+
+/* Clase = "UILabel"; text = "How much would you pay? ($)"; ObjectID = "3k9-9J-vzs"; */
+"3k9-9J-vzs.text" = "¿Cuánto estarías dispuesto a pagar? (€)";
+
+/* Clase = "UIViewController"; title = "Saved"; ObjectID = "3pE-S3-DdW"; */
+"3pE-S3-DdW.title" = "Guardado";
+
+/* Clase = "UIButton"; configuration.title = "Prev"; ObjectID = "B4X-d1-flw"; */
+"B4X-d1-flw.configuration.title" = "Anterior";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "B4X-d1-flw"; */
+"B4X-d1-flw.normalTitle" = "Botón";
+
+/* Clase = "UIButton"; configuration.title = "Prev"; ObjectID = "D7h-We-Z9n"; */
+"D7h-We-Z9n.configuration.title" = "Anterior";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "D7h-We-Z9n"; */
+"D7h-We-Z9n.normalTitle" = "Botón";
+
+/* Clase = "UILabel"; text = "Amount:"; ObjectID = "Ee6-Qo-KYL"; */
+"Ee6-Qo-KYL.text" = "Cantidad:";
+
+/* Clase = "UIButton"; configuration.title = "Refresh"; ObjectID = "Jwf-Cx-UEF"; */
+"Jwf-Cx-UEF.configuration.title" = "Actualizar";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "Jwf-Cx-UEF"; */
+"Jwf-Cx-UEF.normalTitle" = "Botón";
+
+/* Clase = "UILabel"; text = "Name:"; ObjectID = "L7d-eU-WR0"; */
+"L7d-eU-WR0.text" = "Nombre:";
+
+/* Clase = "UIButton"; configuration.title = "Next"; ObjectID = "LcE-Pd-k7V"; */
+"LcE-Pd-k7V.configuration.title" = "Siguiente";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "LcE-Pd-k7V"; */
+"LcE-Pd-k7V.normalTitle" = "Botón";
+
+/* Clase = "UIButton"; configuration.title = "Next"; ObjectID = "MaC-h9-RV2"; */
+"MaC-h9-RV2.configuration.title" = "Siguiente";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "MaC-h9-RV2"; */
+"MaC-h9-RV2.normalTitle" = "Botón";
+
+/* Clase = "UIButton"; configuration.title = "Downvote"; ObjectID = "Nis-dP-TAG"; */
+"Nis-dP-TAG.configuration.title" = "Votar en contra";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "Nis-dP-TAG"; */
+"Nis-dP-TAG.normalTitle" = "Botón";
+
+/* Clase = "UITabBarItem"; title = "Search"; ObjectID = "Qcj-Zr-LlM"; */
+"Qcj-Zr-LlM.title" = "Buscar";
+
+/* Clase = "UIButton"; configuration.title = "Save"; ObjectID = "QuQ-pK-neR"; */
+"QuQ-pK-neR.configuration.title" = "Guardar";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "QuQ-pK-neR"; */
+"QuQ-pK-neR.normalTitle" = "Botón";
+
+/* Clase = "UIButton"; configuration.title = "Upvote"; ObjectID = "Rr6-xB-t74"; */
+"Rr6-xB-t74.configuration.title" = "Votar a favor";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "Rr6-xB-t74"; */
+"Rr6-xB-t74.normalTitle" = "Botón";
+
+/* Clase = "UILabel"; text = "???"; ObjectID = "Sm1-E6-fRo"; */
+"Sm1-E6-fRo.text" = "???";
+
+/* Clase = "UILabel"; text = "Name"; ObjectID = "Wnx-eH-yQf"; */
+"Wnx-eH-yQf.text" = "Nombre:";
+
+/* Clase = "UIButton"; configuration.title = "Refresh"; ObjectID = "X6l-p2-dhL"; */
+"X6l-p2-dhL.configuration.title" = "Actualizar";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "X6l-p2-dhL"; */
+"X6l-p2-dhL.normalTitle" = "Botón";
+
+/* Clase = "UIButton"; configuration.title = "Prev"; ObjectID = "alO-y5-TK3"; */
+"alO-y5-TK3.configuration.title" = "Anterior";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "alO-y5-TK3"; */
+"alO-y5-TK3.normalTitle" = "Botón";
+
+/* Clase = "UITabBarItem"; title = "Saved"; ObjectID = "cRf-es-6RE"; */
+"cRf-es-6RE.title" = "Guardado";
+
+/* Clase = "UILabel"; text = "???"; ObjectID = "hfB-Oe-ax8"; */
+"hfB-Oe-ax8.text" = "???";
+
+/* Clase = "UIButton"; configuration.title = "facebook"; ObjectID = "iC7-dc-ykK"; */
+"iC7-dc-ykK.configuration.title" = "Facebook";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "iC7-dc-ykK"; */
+"iC7-dc-ykK.normalTitle" = "Botón";
+
+/* Clase = "UILabel"; text = "???"; ObjectID = "p8c-N9-1kE"; */
+"p8c-N9-1kE.text" = "???";
+
+/* Clase = "UIViewController"; title = "Votes"; ObjectID = "qi4-Nw-ypo"; */
+"qi4-Nw-ypo.title" = "Votos";
+
+/* Clase = "UIButton"; configuration.title = "Next"; ObjectID = "urs-5I-Hzw"; */
+"urs-5I-Hzw.configuration.title" = "Siguiente";
+
+/* Clase = "UIButton"; normalTitle = "Button"; ObjectID = "urs-5I-Hzw"; */
+"urs-5I-Hzw.normalTitle" = "Botón";
+
+/* Clase = "UITabBarItem"; title = "Votes"; ObjectID = "x9j-ML-jGL"; */
+"x9j-ML-jGL.title" = "Votos";

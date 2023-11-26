@@ -72,6 +72,8 @@
 		80B95A602B10347B00004CC9 /* CatSaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSaveViewController.swift; sourceTree = "<group>"; };
 		80B95A662B103C8200004CC9 /* CatRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatRepo.swift; sourceTree = "<group>"; };
 		80B95A692B103D0A00004CC9 /* MyDatabaseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDatabaseModel.xcdatamodel; sourceTree = "<group>"; };
+		BC75CF8B2B13895600D2069D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		BC75CF8C2B138AAC00D2069D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		E2F0BF6E2B1284F200CB1184 /* meow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = meow; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -278,6 +280,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				es,
 			);
 			mainGroup = 8034C7312B0C3FA3004C32EC;
 			packageReferences = (
@@ -378,6 +382,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8034C7442B0C3FA3004C32EC /* Base */,
+				BC75CF8B2B13895600D2069D /* fr */,
+				BC75CF8C2B138AAC00D2069D /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -457,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
