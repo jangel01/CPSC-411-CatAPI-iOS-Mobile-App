@@ -7,6 +7,8 @@
 
 import UIKit
 import AVFoundation
+import FacebookCore
+import FacebookLogin
 
 class CatSearchViewController: UIViewController, UITextFieldDelegate {
 
@@ -294,6 +296,28 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
                 (saveResult) in
             }
         }
+    }
+    
+    
+    @IBAction func facebookButtonTapped(_ sender: Any) {
+        // 登录facebook
+        let login = LoginManager.init()
+        login.logIn(permissions: ["public_profile"], from: self) { (result, error) in
+            print(result?.token?.appID)
+            print(result?.token?.userID)
+          
+            /// id,name,email,age_range,first_name,last_name,link,gender,locale,picture,timezone,updated_time,verified
+            let request = GraphRequest.init(graphPath: result!.token!.userID, parameters: ["fields": "name"], httpMethod: HTTPMethod.get)
+            request.start { result,one,two  in
+                print(result)
+                print(one)
+                let alertController = UIAlertController(title: "Message", message: "\(one)", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+        
     }
     
     func hideViews() {

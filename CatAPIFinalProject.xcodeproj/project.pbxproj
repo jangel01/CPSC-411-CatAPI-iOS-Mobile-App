@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0190412B136B39009F12E7 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0190402B136B39009F12E7 /* FacebookAEM */; };
+		2D0190432B136B39009F12E7 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0190422B136B39009F12E7 /* FacebookBasics */; };
+		2D0190452B136B39009F12E7 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0190442B136B39009F12E7 /* FacebookCore */; };
+		2D0190472B136B39009F12E7 /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0190462B136B39009F12E7 /* FacebookGamingServices */; };
+		2D0190492B136B39009F12E7 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0190482B136B39009F12E7 /* FacebookLogin */; };
+		2D01904B2B136B39009F12E7 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 2D01904A2B136B39009F12E7 /* FacebookShare */; };
 		8034C73E2B0C3FA3004C32EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C73D2B0C3FA3004C32EC /* AppDelegate.swift */; };
 		8034C7402B0C3FA3004C32EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C73F2B0C3FA3004C32EC /* SceneDelegate.swift */; };
 		8034C7422B0C3FA3004C32EC /* CatSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034C7412B0C3FA3004C32EC /* CatSearchViewController.swift */; };
@@ -45,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D018F932B130DBF009F12E7 /* CatAPIFinalProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CatAPIFinalProject.entitlements; sourceTree = "<group>"; };
 		8034C73A2B0C3FA3004C32EC /* CatAPIFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatAPIFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8034C73D2B0C3FA3004C32EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8034C73F2B0C3FA3004C32EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +80,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D0190492B136B39009F12E7 /* FacebookLogin in Frameworks */,
+				2D0190472B136B39009F12E7 /* FacebookGamingServices in Frameworks */,
+				2D0190452B136B39009F12E7 /* FacebookCore in Frameworks */,
+				2D0190412B136B39009F12E7 /* FacebookAEM in Frameworks */,
 				BC75CF882B12DEF400D2069D /* OAuthSwift in Frameworks */,
+				2D01904B2B136B39009F12E7 /* FacebookShare in Frameworks */,
+				2D0190432B136B39009F12E7 /* FacebookBasics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +107,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D018FD12B136940009F12E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8034C7312B0C3FA3004C32EC = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +121,7 @@
 				8034C7532B0C3FA4004C32EC /* CatAPIFinalProjectTests */,
 				8034C75D2B0C3FA4004C32EC /* CatAPIFinalProjectUITests */,
 				8034C73B2B0C3FA3004C32EC /* Products */,
+				2D018FD12B136940009F12E7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +138,7 @@
 		8034C73C2B0C3FA3004C32EC /* CatAPIFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				2D018F932B130DBF009F12E7 /* CatAPIFinalProject.entitlements */,
 				80B95A622B1036EF00004CC9 /* db */,
 				8034C73D2B0C3FA3004C32EC /* AppDelegate.swift */,
 				8034C73F2B0C3FA3004C32EC /* SceneDelegate.swift */,
@@ -179,6 +201,12 @@
 			name = CatAPIFinalProject;
 			packageProductDependencies = (
 				BC75CF872B12DEF400D2069D /* OAuthSwift */,
+				2D0190402B136B39009F12E7 /* FacebookAEM */,
+				2D0190422B136B39009F12E7 /* FacebookBasics */,
+				2D0190442B136B39009F12E7 /* FacebookCore */,
+				2D0190462B136B39009F12E7 /* FacebookGamingServices */,
+				2D0190482B136B39009F12E7 /* FacebookLogin */,
+				2D01904A2B136B39009F12E7 /* FacebookShare */,
 			);
 			productName = CatAPIFinalProject;
 			productReference = 8034C73A2B0C3FA3004C32EC /* CatAPIFinalProject.app */;
@@ -254,6 +282,7 @@
 			mainGroup = 8034C7312B0C3FA3004C32EC;
 			packageReferences = (
 				BC75CF862B12DEF400D2069D /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				2D01903F2B136B39009F12E7 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 8034C73B2B0C3FA3004C32EC /* Products */;
 			projectDirPath = "";
@@ -483,8 +512,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CatAPIFinalProject/CatAPIFinalProject.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66Y8L9PQWR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CatAPIFinalProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -498,8 +530,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.angeljason.CatAPIFinalProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.angeljason.CatAPIFinalProject123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -511,8 +544,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CatAPIFinalProject/CatAPIFinalProject.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66Y8L9PQWR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CatAPIFinalProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -526,8 +562,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.angeljason.CatAPIFinalProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.angeljason.CatAPIFinalProject123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -648,6 +685,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2D01903F2B136B39009F12E7 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
 		BC75CF862B12DEF400D2069D /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift.git";
@@ -659,6 +704,36 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2D0190402B136B39009F12E7 /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D01903F2B136B39009F12E7 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		2D0190422B136B39009F12E7 /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D01903F2B136B39009F12E7 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		2D0190442B136B39009F12E7 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D01903F2B136B39009F12E7 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		2D0190462B136B39009F12E7 /* FacebookGamingServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D01903F2B136B39009F12E7 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookGamingServices;
+		};
+		2D0190482B136B39009F12E7 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D01903F2B136B39009F12E7 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		2D01904A2B136B39009F12E7 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D01903F2B136B39009F12E7 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
 		BC75CF872B12DEF400D2069D /* OAuthSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BC75CF862B12DEF400D2069D /* XCRemoteSwiftPackageReference "OAuthSwift" */;
