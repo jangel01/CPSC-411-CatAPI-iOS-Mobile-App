@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  CatAPIFinalProject
+
+  Created by AG. on 11/26/23.
+  
+*/
+"alert_title_vote_recorded" = "Vote recorded!";
+"alert_message_upvote" = "You have upvoted the image";
+"alert_message_downvote" = "You have downvoted the image";
+"alert_title_cat_saved" = "Cat saved!";
+"alert_message_cat_saved" = "You have saved the cat image and information";
+"status_label_upvoted" = "You upvoted this image!";
+"status_label_downvoted" = "You downvoted this image!";
+"placeholder_name" = "Ex. John";
+"placeholder_amount" = "10.00";
+"alert_action_ok" = "OK";

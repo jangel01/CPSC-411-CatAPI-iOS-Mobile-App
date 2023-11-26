@@ -30,6 +30,7 @@
 		80B95A672B103C8200004CC9 /* CatRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A662B103C8200004CC9 /* CatRepo.swift */; };
 		80B95A6A2B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80B95A682B103D0A00004CC9 /* MyDatabaseModel.xcdatamodeld */; };
 		BC75CF882B12DEF400D2069D /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BC75CF872B12DEF400D2069D /* OAuthSwift */; };
+		BC75CF8F2B1396A600D2069D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC75CF912B1396A600D2069D /* Localizable.strings */; };
 		E2F0BF6F2B1284F200CB1184 /* meow in Resources */ = {isa = PBXBuildFile; fileRef = E2F0BF6E2B1284F200CB1184 /* meow */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,9 @@
 		80B95A692B103D0A00004CC9 /* MyDatabaseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDatabaseModel.xcdatamodel; sourceTree = "<group>"; };
 		BC75CF8B2B13895600D2069D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		BC75CF8C2B138AAC00D2069D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		BC75CF902B1396A600D2069D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BC75CF922B1396A900D2069D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BC75CF932B1396AA00D2069D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2F0BF6E2B1284F200CB1184 /* meow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = meow; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,7 @@
 				80B95A5E2B0FEE0800004CC9 /* CatPersistence.swift */,
 				80B95A602B10347B00004CC9 /* CatSaveViewController.swift */,
 				E2F0BF6E2B1284F200CB1184 /* meow */,
+				BC75CF912B1396A600D2069D /* Localizable.strings */,
 			);
 			path = CatAPIFinalProject;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC75CF8F2B1396A600D2069D /* Localizable.strings in Resources */,
 				E2F0BF6F2B1284F200CB1184 /* meow in Resources */,
 				8034C74A2B0C3FA4004C32EC /* LaunchScreen.storyboard in Resources */,
 				8034C7472B0C3FA4004C32EC /* Assets.xcassets in Resources */,
@@ -394,6 +400,16 @@
 				8034C7492B0C3FA4004C32EC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BC75CF912B1396A600D2069D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC75CF902B1396A600D2069D /* en */,
+				BC75CF922B1396A900D2069D /* fr */,
+				BC75CF932B1396AA00D2069D /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

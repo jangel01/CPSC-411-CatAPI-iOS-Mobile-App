@@ -71,7 +71,7 @@ class CatVotesViewController: UIViewController {
                         if !images.isEmpty {
                             self.updateVoteImageView(for: images.first!, true)
                             self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
-                            self.voteStatusLabel.text = "You upvoted this image!"
+                            self.voteStatusLabel.text = NSLocalizedString("status_label_upvoted", comment: "")
                         } else {
                             print("there are no upvoted images to view")
                             self.hideViews()
@@ -89,7 +89,7 @@ class CatVotesViewController: UIViewController {
                         if !images.isEmpty {
                             self.updateVoteImageView(for: images.first!, true)
                             self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
-                            self.voteStatusLabel.text = "You downvoted this image!"
+                            self.voteStatusLabel.text = NSLocalizedString("status_label_downvoted", comment: "")
                         } else {
                             print("there are no downvoted images to view")
                             self.hideViews()
@@ -152,7 +152,7 @@ class CatVotesViewController: UIViewController {
                     let isFirst = self.isIndexFirst(self.currentDownvoteIndex, "downvotes")
                     self.updateVoteImageView(for: images[self.currentDownvoteIndex], isFirst)
                     self.voteStatusAsset.image = UIImage(named: "thumbs-down.png")
-                    self.voteStatusLabel.text = "You downvoted this image!"
+                    self.voteStatusLabel.text = NSLocalizedString("status_label_downvoted", comment: "")
                 } else {
                     print("there are no downvoted images to view")
                     self.hideViews()
@@ -170,7 +170,7 @@ class CatVotesViewController: UIViewController {
                     let isFirst = self.isIndexFirst(self.currentUpvoteIndex, "upvotes")
                     self.updateVoteImageView(for: images[self.currentUpvoteIndex], isFirst)
                     self.voteStatusAsset.image = UIImage(named: "thumbs-up.png")
-                    self.voteStatusLabel.text = "You upvoted this image!"
+                    self.voteStatusLabel.text = NSLocalizedString("status_label_upvoted", comment: "")
                 } else {
                     print("there are no upvoted images to view")
                     self.hideViews()

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  CatAPIFinalProject
+
+  Created by AG. on 11/26/23.
+  
+*/
+"alert_title_vote_recorded" = "Vote enregistré !";
+"alert_message_upvote" = "Vous avez voté positivement pour l'image";
+"alert_message_downvote" = "Vous avez voté négativement pour l'image";
+"alert_title_cat_saved" = "Chat enregistré !";
+"alert_message_cat_saved" = "Vous avez enregistré l'image et les informations du chat";
+"status_label_upvoted" = "Vous avez voté positivement pour cette image !";
+"status_label_downvoted" = "Vous avez voté négativement pour cette image !";
+"placeholder_name" = "Ex. Jean";
+"placeholder_amount" = "10,00";
+"alert_action_ok" = "D'accord";

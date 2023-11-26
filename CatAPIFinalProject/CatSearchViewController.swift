@@ -39,8 +39,9 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
         self.catRepo = CatRepo {
             (initResult) in
         }
-        self.nameInput.placeholder = "Ex. John"
-        self.amountInput.placeholder = "10.00"
+        self.nameInput.placeholder = NSLocalizedString("placeholder_name", comment: "")
+        self.amountInput.placeholder = NSLocalizedString("placeholder_amount", comment: "")
+
         self.fetchCatImages()
         
         nameInput.delegate = self
@@ -211,8 +212,13 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
                         print("upvoted cat image! \(result.imageId), status: \(result.message)")
                         self.toggleVoteButtons(false)
                         
-                        let alert = UIAlertController(title: "Vote recorded!", message: "You have upvoted the image", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        let alertTitle = NSLocalizedString("alert_title_vote_recorded", comment: "")
+                        let alertMessage = NSLocalizedString("alert_message_upvote", comment: "")
+                        let alertOkActionTitle = NSLocalizedString("alert_action_ok", comment: "")
+
+                        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: alertOkActionTitle, style: .default, handler: nil))
+
                         self.present(alert, animated: true, completion: nil)
                     case let .failure(error):
                         print("Failed to upvote image: \(error)")
@@ -238,8 +244,13 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
                         print("downvoted cat image! \(result.imageId), status: \(result.message)")
                         self.toggleVoteButtons(false)
                         
-                        let alert = UIAlertController(title: "Vote recorded!", message: "You have downvoted the image", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        let alertTitle = NSLocalizedString("alert_title_vote_recorded", comment: "")
+                        let alertMessage = NSLocalizedString("alert_message_downvote", comment: "")
+                        let alertOkActionTitle = NSLocalizedString("alert_action_ok", comment: "")
+
+                        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: alertOkActionTitle, style: .default, handler: nil))
+
                         self.present(alert, animated: true, completion: nil)
                     case let .failure(error):
                         print("Failed to downvote image: \(error)")
@@ -271,8 +282,12 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
                     cat.imgPath = urlAsString
                     CatPersistence.saveFileToUserFolder(fileName: filename, data: data)
                     
-                    let alert = UIAlertController(title: "Cat saved!", message: "You have saved the cat image and information", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    let alertTitle = NSLocalizedString("alert_title_cat_saved", comment: "")
+                    let alertMessage = NSLocalizedString("alert_message_cat_saved", comment: "")
+                    let alertOkActionTitle = NSLocalizedString("alert_action_ok", comment: "")
+
+                    let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: alertOkActionTitle, style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     
                     self.saveButton.isEnabled = false
