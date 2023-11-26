@@ -201,7 +201,6 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func upvoteButtonTapped(_ btn: UIButton) {
-        self.triggerSound(str: "hungry")
         if let catSearchImages = self.catSearchImages {
             if !catSearchImages.isEmpty {
                 self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: 1) {
@@ -211,6 +210,8 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
                     case let .success(result):
                         print("upvoted cat image! \(result.imageId), status: \(result.message)")
                         self.toggleVoteButtons(false)
+                        
+                        self.triggerSound(str: "hungry")
                         
                         let alertTitle = NSLocalizedString("alert_title_vote_recorded", comment: "")
                         let alertMessage = NSLocalizedString("alert_message_upvote", comment: "")
@@ -233,7 +234,6 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func downvoteButtonTapped(_ btn: UIButton) {
-        self.triggerSound(str: "angry")
         if let catSearchImages = self.catSearchImages {
             if !catSearchImages.isEmpty {
                 self.catAPIService.voteOnImage(imageId: catSearchImages[currentImageIndex].id, value: -1) {
@@ -243,6 +243,8 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
                     case let .success(result):
                         print("downvoted cat image! \(result.imageId), status: \(result.message)")
                         self.toggleVoteButtons(false)
+                        
+                        self.triggerSound(str: "angry")
                         
                         let alertTitle = NSLocalizedString("alert_title_vote_recorded", comment: "")
                         let alertMessage = NSLocalizedString("alert_message_downvote", comment: "")
@@ -282,6 +284,8 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
                     cat.imgPath = urlAsString
                     CatPersistence.saveFileToUserFolder(fileName: filename, data: data)
                     
+                    self.triggerSound(str: "purr")
+                    
                     let alertTitle = NSLocalizedString("alert_title_cat_saved", comment: "")
                     let alertMessage = NSLocalizedString("alert_message_cat_saved", comment: "")
                     let alertOkActionTitle = NSLocalizedString("alert_action_ok", comment: "")
@@ -303,7 +307,6 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveButtonTapped(_ btn: UIButton) {
-        self.triggerSound(str: "purr")
         let cat = self.catRepo.makeCat()
         
         if (self.viewToCat(cat: cat)) {
@@ -342,7 +345,7 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
     func resetInputs() {
         self.amountInput.text = ""
         self.nameInput.text = ""
-        // just pass any either input field -- doesn't matter
+        // just pass either input field -- doesn't matter
         self.saveAllPreferences(self.nameInput)
     }
     
