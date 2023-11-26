@@ -73,6 +73,11 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.nameInput.resignFirstResponder()
+        self.amountInput.resignFirstResponder()
+    }
+    
     @IBAction func saveAllPreferences(_ sender: UITextField) {
         
         let defaults = UserDefaults.standard

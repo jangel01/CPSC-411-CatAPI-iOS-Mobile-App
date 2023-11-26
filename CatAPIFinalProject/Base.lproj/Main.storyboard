@@ -159,6 +159,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="nNv-E5-65f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2d3-lr-K12"/>
                             <constraint firstItem="62R-ln-d0x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="3of-cI-0Xs"/>
@@ -215,6 +216,9 @@
                                 <include reference="ljy-H0-ZfT"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="glx-P4-cKY" appends="YES" id="ebS-a4-SUJ"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass.circle.fill" catalog="system" id="Qcj-Zr-LlM"/>
                     <connections>
@@ -227,6 +231,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="glx-P4-cKY">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="EAq-gd-TP0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1057.2519083969464" y="-27.464788732394368"/>
         </scene>
