@@ -322,7 +322,8 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func facebookButtonTapped(_ sender: Any) {
+/*      //old code for oAuth
+        @IBAction func facebookButtonTapped(_ sender: Any) {
         // 登录facebook
         let login = LoginManager.init()
         login.logIn(permissions: ["public_profile"], from: self) { (result, error) in
@@ -340,8 +341,61 @@ class CatSearchViewController: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
+    }*/
+    
+    //new code for oAuth
+    @IBAction func facebookButtonTapped(_ sender: Any) {
+        // Initialize Facebook Login Manager
+        let login = LoginManager()
+
+        // Perform Facebook login
+        login.logIn(permissions: ["public_profile"], from: self) { [weak self] (result, error) in
+            // Check for any errors
+            if let error = error {
+                print("Login error: \(error.localizedDescription)")
+                return
+            }
+
+            // Safely unwrap the token
+            guard let token = result?.token else {
+                print("Error: Unable to retrieve token")
+                return
+            }
+
+            // Extract userID from the token
+            let userID = token.userID
+            print("App ID: \(token.appID)")
+            print("User ID: \(userID)")
+
+            // Setup the Graph Request
+            let request = GraphRequest(graphPath: userID, parameters: ["fields": "name"], tokenString: token.tokenString, version: nil, httpMethod: .get)
+            
+            // Start the Graph Request
+            request.start { _, result, error in
+                // Check for any errors
+                if let error = error {
+                    print("Graph request error: \(error.localizedDescription)")
+                    return
+                }
+
+                // Handle the result
+                if let result = result {
+                    print("Graph Request Result: \(result)")
+                } else {
+                    print("Graph Request returned no result")
+                }
+
+                // Show an alert with the result
+                guard let strongSelf = self else { return }
+                let message = result != nil ? "\(result!)" : "No data"
+                let alertController = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel)
+                alertController.addAction(okAction)
+                strongSelf.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
+
     
     func hideViews() {
         self.searchImageView = nil
