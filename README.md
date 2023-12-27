@@ -11,7 +11,7 @@ This project utilizes the "CatAPI" which can be found here: https://thecatapi.co
 * Jesse Shaihor 
 
 # Overview
-This project aims to bring some of the functionality of the CatAPI as a mobile application. You are able to fetch random cat images and vote on them. Additionally, as part of the project requirements, you are able to save the images locally on your phone. There are three screens for the app: the search screen, vote screen, and save screen. The app is translated for both Spanish and French.
+This project aims to bring some of the functionality of the CatAPI as a mobile application. You are able to fetch random cat images and vote on them. Additionally, as part of the project requirements, you are able to save the images locally. There are three screens for the app: the search screen, vote screen, and save screen. The app is translated for both Spanish and French.
 
 ## Search screen
 Here you are able to view random cat images. You can traverse the images and vote on them. There are 10 total images per API call. You have to click the reroll button if you want new images. You can also save the image and have it stored locally on your phone (both text fields are required). You can vote or save the same image as many times as you want, there are no restrictions. Although you do have to navigate back and forth in order to do so.
@@ -27,4 +27,7 @@ As part of the project requirements, the first image (from either the upvote or 
 
 ## Save screen
 Here you are able to view the 10 recent images you have saved locally. There is no way to delete them through the app. You have to manually navigate to your user documents folder and delete them through there (or on your phone if you're not running through the simulator).
+
+## Set Up
+Simply clone the project and open it in Xcode. You can then run the simulator or launch it on your phone if you wish.
 
