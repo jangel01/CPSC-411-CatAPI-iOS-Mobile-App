@@ -26,5 +26,5 @@ Here you are able to view the 10 recent images you have voted on. When the phone
 As part of the project requirements, the first image (from either the upvote or downvote image array) is cached, the rest are downloaded. Therefore even if the first image was cached and if it were to become the second element later on, it would be downloaded instead.
 
 ## Save screen
-Here you are able to view the 10 recent images you have saved locally. There is no way to delete them through the app. You have to manually navigate to your user documents folder and delete them through there (or through your phone if you're not running through the simulator).
+Here you are able to view the 10 recent images you have saved locally. There is no way to delete them through the app. You have to manually navigate to your user documents folder and delete them through there (or on your phone if you're not running through the simulator).
 
