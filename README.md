@@ -28,6 +28,8 @@ As part of the project requirements, the first image (from either the upvote or 
 ## Save screen
 Here you are able to view the 10 recent images you have saved locally. There is no way to delete them through the app. You have to manually navigate to your user documents folder and delete them through there (or on your phone if you're not running through the simulator).
 
-## Set Up
+# Set Up
 Simply clone the project and open it in Xcode. You can then run the simulator or launch it on your phone if you wish.
+
+# Screenshots
 
